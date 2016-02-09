@@ -10,12 +10,12 @@ bool finished = FALSE;	/* if true, cut off search immediately */
 
 initialize_search(graph *g)
 {
-        int i;                          /* counter */
+    int i;                          /* counter */
 
-        for (i=1; i<=g->nvertices; i++) {
-                processed[i] = discovered[i] = FALSE;
-                parent[i] = -1;
-        }
+    for (i=1; i<=g->nvertices; i++) {
+        processed[i] = discovered[i] = FALSE;
+        parent[i] = -1;
+    }
 }
 
 bfs(graph *g, int start)
