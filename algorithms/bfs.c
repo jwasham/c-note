@@ -1,3 +1,8 @@
+/**
+ * Implementation incomplete.
+ * Will come back to this.
+ */
+
 #include "bool.h"
 #include "graph.h"
 #include "queue.h"
