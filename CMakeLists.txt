@@ -7,6 +7,6 @@ set(SOURCE_FILES
     intro/degrees-cf.c
     intro/degrees-fc.c
     intro/hello.c
-    README.md)
+    README.md algorithms/bfs.c.c)
 
 add_executable(c_note ${SOURCE_FILES})
