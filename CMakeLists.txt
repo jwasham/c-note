@@ -7,6 +7,6 @@ set(SOURCE_FILES
     intro/degrees-cf.c
     intro/degrees-fc.c
     intro/hello.c
-    README.md algorithms/bfs.c)
+    README.md algorithms/bfs.c algorithms/same-sign-test.c)
 
 add_executable(c_note ${SOURCE_FILES})
