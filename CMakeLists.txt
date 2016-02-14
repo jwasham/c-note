@@ -4,9 +4,9 @@ project(c_note)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES
-    intro/degrees-cf.c
-    intro/degrees-fc.c
-    intro/hello.c
+        exercises/chapter1/degrees-cf.c
+        exercises/chapter1/degrees-fc.c
+        exercises/hello.c
     README.md algorithms/bfs.c algorithms/same-sign-test.c)
 
 add_executable(c_note ${SOURCE_FILES})
