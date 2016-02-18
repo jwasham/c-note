@@ -49,6 +49,11 @@ int main()
     printf("Should be 12113: %d\n", htoi("2f51"));
     printf("Should be 809149: %d\n", htoi("c58bD"));
 
+    // with 0x at beginning
+
+    printf("Should be 12113: %d\n", htoi("0x2f51"));
+    printf("Should be 809149: %d\n", htoi("0xc58bD"));
+
     // oddballs with non-hex characters
 
     printf("Should be 0: %d\n", htoi(""));
