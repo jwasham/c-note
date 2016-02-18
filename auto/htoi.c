@@ -55,9 +55,10 @@ int main()
     printf("Should be 0: %d\n", htoi("^^^^"));
     printf("Should be 0: %d\n", htoi("     "));
     printf("Should be 0: %d\n", htoi("!\nYo\t\a"));
+    printf("Should be 0: %d\n", htoi("000"));
     printf("Should be 0: %d\n", htoi("0HK"));
     printf("Should be 0: %d\n", htoi("\05"));
-    printf("Should be 6: %d\n", htoi("6HK"));
+    printf("Should be 4: %d\n", htoi("4HK"));
     printf("Should be 103: %d\n", htoi("6Z7Z"));
     printf("Should be 103: %d\n", htoi("-6Z7Z"));
     printf("Should be 365307: %d\n", htoi("M592FSUB"));
