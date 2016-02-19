@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
     scanf("%d", &n);
     printf("The values on dice are: ( ");
     for (i = 0; i < n; i++)
-        printf("%d ", (rand() % 6) + 1);
+        printf("%d ", (rand() % 6) + 1); // terrible rand
 
     printf(")");
 
