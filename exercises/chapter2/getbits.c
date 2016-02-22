@@ -22,6 +22,7 @@ const char* displaybits(unsigned int d)
     }
 
     // reverse string
+    // @todo create an in-place reverse string algorithm
 
     i--;
 
