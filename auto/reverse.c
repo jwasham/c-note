@@ -2,16 +2,13 @@
 
 const char* reverse(char* word, int len)
 {
-    int half = len/2;
+    int half = (len)/2 + 1; // added one for odd length
+    int maxIndex = len - 1;
     static char rev[sizeof(word) + 1];
 
-    printf("%s\n", word);
-    printf("%d\n", len);
-    printf("%d\n", half);
-
     for (int i = 0; i < half; i++) {
-        rev[i] =  word[len - i];
-        rev[len - i] =  word[i];
+        rev[i] = word[maxIndex - i];
+        rev[maxIndex - i] =  word[i];
     }
 
     rev[len] = '\0';
@@ -21,8 +18,11 @@ const char* reverse(char* word, int len)
 
 int main(int argc, char* argv[])
 {
-    char word[] = "go backwards";
-    int length = sizeof(word)/sizeof(word[0]);
+    char phrase[] = "go backwards";
+    char time[] = "time";
+    char odd[] = "odd";
 
-    printf("should be 'sdrawkcab og': %s\n", reverse(word, length));
+    printf("should be 'sdrawkcab og': %s\n", reverse(phrase, sizeof(phrase)/sizeof(phrase[0]) - 1));
+    printf("should be 'emit': %s\n", reverse(time, sizeof(time)/sizeof(time[0]) - 1));
+    printf("should be 'ddo': %s\n", reverse(odd, sizeof(odd)/sizeof(odd[0]) - 1));
 }
