@@ -9,3 +9,4 @@ See [Safety](safety.md) for string-safe functions.
 References:
 
 - http://c-faq.com/index.html
+- http://www.sanfoundry.com/c-programming-examples-numerical-problems-algorithms/
