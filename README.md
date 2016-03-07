@@ -12,6 +12,7 @@ Notes on C and some mini-programs.
 - [Safety](safety.md) for string-safe functions
 - The GNU C Reference Manual: http://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html
 - ACM: The C Reference Guide - https://www-s.acm.illinois.edu/webmonkeys/book/c_guide/
+- MSDN: C Language Reference - https://msdn.microsoft.com/en-us/library/fw5abdx6.aspx
 
 ### Algorithms in C
 
