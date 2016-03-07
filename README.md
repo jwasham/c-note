@@ -14,6 +14,10 @@ Notes on C and some mini-programs.
 - ACM: The C Reference Guide - https://www-s.acm.illinois.edu/webmonkeys/book/c_guide/
 - MSDN: C Language Reference - https://msdn.microsoft.com/en-us/library/fw5abdx6.aspx
 
+### Books
+
+- The C Programming Language 2nd Edition (1988) http://www.amazon.com/The-Programming-Language-Brian-Kernighan/dp/0131103628
+
 ### Algorithms in C
 
 - http://www.sanfoundry.com/c-programming-examples-numerical-problems-algorithms/
