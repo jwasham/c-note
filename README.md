@@ -19,6 +19,7 @@ Notes on C and some mini-programs.
 - The C Programming Language 2nd Edition (1988): http://www.amazon.com/The-Programming-Language-Brian-Kernighan/dp/0131103628
 - The C Answer Book: Solutions to the Exercises in 'The C Programming Language,' Second Edition: http://www.amazon.com/The-Answer-Book-Solutions-Programming/dp/0131096532
 - More solutions to exercises in The C Programming Language: https://github.com/anotherlin/tcpl
+- C Primer Plus (6th Edition): http://www.amazon.com/Primer-Plus-Edition-Developers-Library/dp/0321928423/
 
 ### Algorithms in C
 
