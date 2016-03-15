@@ -21,6 +21,7 @@ Notes on C and some mini-programs.
 - More solutions to exercises in The C Programming Language: https://github.com/anotherlin/tcpl
 - C Primer Plus (6th Edition): http://www.amazon.com/Primer-Plus-Edition-Developers-Library/dp/0321928423/
 - C Pocket Reference 1st Edition: http://www.amazon.com/C-Pocket-Reference-Peter-Prinz/dp/0596004362/
+- Programming in C (3rd Edition): http://www.amazon.com/dp/0672326663/
 
 ### Algorithms in C
 
