@@ -26,7 +26,7 @@ Notes on C and some mini-programs.
 
 #### Intermediate
 
-
+- Object-oriented Programming with ANSI-C (Free PDF): http://www.planetpdf.com/codecuts/pdfs/ooc.pdf
 
 #### Advanced
 
