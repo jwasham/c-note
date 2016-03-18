@@ -30,7 +30,7 @@ Notes on C and some mini-programs.
 
 #### Advanced
 
-
+- Advanced Programming in the UNIX Environment, 3rd Edition: http://www.amazon.com/dp/0321637739/
 
 #### General Reference
 
