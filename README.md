@@ -22,6 +22,7 @@ Notes on C and some mini-programs.
 - The C Answer Book: Solutions to the Exercises in 'The C Programming Language,' Second Edition: http://www.amazon.com/The-Answer-Book-Solutions-Programming/dp/0131096532
 - More solutions to exercises in The C Programming Language: https://github.com/anotherlin/tcpl
 - Programming in C (3rd Edition): http://www.amazon.com/dp/0672326663/
+- A Book on C: Programming in C (4th Edition): http://www.amazon.com/dp/0201183994/
 - C Primer Plus (6th Edition): http://www.amazon.com/Primer-Plus-Edition-Developers-Library/dp/0321928423/
 
 #### Intermediate
