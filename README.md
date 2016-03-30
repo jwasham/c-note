@@ -24,6 +24,7 @@ Notes on C and some mini-programs.
 - Programming in C (3rd Edition): http://www.amazon.com/dp/0672326663/
 - A Book on C: Programming in C (4th Edition): http://www.amazon.com/dp/0201183994/
 - C Primer Plus (6th Edition): http://www.amazon.com/Primer-Plus-Edition-Developers-Library/dp/0321928423/
+- Pointers on C - 1st Edition: http://www.amazon.com/Pointers-C-Kenneth-Reek/dp/0673999866
 
 #### Intermediate
 
