@@ -33,6 +33,7 @@ Notes on C and some mini-programs.
 
 #### Advanced
 
+- Expert C Programming: Deep C Secrets 1st Edition: http://www.amazon.com/Expert-Programming-Peter-van-Linden/dp/0131774298/
 - Advanced Programming in the UNIX Environment, 3rd Edition: http://www.amazon.com/dp/0321637739/
 
 #### General Reference
