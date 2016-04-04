@@ -32,6 +32,7 @@ Notes on C and some mini-programs.
 - 21st Century C: C Tips from the New School 1st Edition: http://www.amazon.com/dp/1449327141/
 - Understanding and Using C Pointers 1st Edition - http://www.amazon.com/Understanding-Using-Pointers-Richard-Reese/dp/1449344186/
 - C Interfaces and Implementations: Techniques for Creating Reusable Software 1st Edition: http://www.amazon.com/exec/obidos/ASIN/0201498413/
+- C Programming: A Modern Approach, 2nd Edition: http://www.amazon.com/dp/0393979504
 
 #### Advanced
 
