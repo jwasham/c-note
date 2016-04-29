@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main()
-{
+int main() {
     char s[100], r[100];
     int n, c, d;
 

@@ -11,469 +11,451 @@
 /* A singly-linked list */
 
 struct _SListEntry {
-	SListValue data;
-	SListEntry *next;
+    SListValue data;
+    SListEntry *next;
 };
 
-void slist_free(SListEntry *list)
-{
-	SListEntry *entry;
+void slist_free(SListEntry *list) {
+    SListEntry *entry;
 
-	/* Iterate over each entry, freeing each list entry, until the
-	 * end is reached */
+    /* Iterate over each entry, freeing each list entry, until the
+     * end is reached */
 
-	entry = list;
+    entry = list;
 
-	while (entry != NULL) {
-		SListEntry *next;
+    while (entry != NULL) {
+        SListEntry *next;
 
-		next = entry->next;
+        next = entry->next;
 
-		free(entry);
+        free(entry);
 
-		entry = next;
-	}
+        entry = next;
+    }
 }
 
-SListEntry *slist_prepend(SListEntry **list, SListValue data)
-{
-	SListEntry *newentry;
+SListEntry *slist_prepend(SListEntry **list, SListValue data) {
+    SListEntry *newentry;
 
-	/* Create new entry */
+    /* Create new entry */
 
-	newentry = malloc(sizeof(SListEntry));
+    newentry = malloc(sizeof(SListEntry));
 
-	if (newentry == NULL) {
-		return NULL;
-	}
+    if (newentry == NULL) {
+        return NULL;
+    }
 
-	newentry->data = data;
+    newentry->data = data;
 
-	/* Hook into the list start */
+    /* Hook into the list start */
 
-	newentry->next = *list;
-	*list = newentry;
+    newentry->next = *list;
+    *list = newentry;
 
-	return newentry;
+    return newentry;
 }
 
-SListEntry *slist_append(SListEntry **list, SListValue data)
-{
-	SListEntry *rover;
-	SListEntry *newentry;
+SListEntry *slist_append(SListEntry **list, SListValue data) {
+    SListEntry *rover;
+    SListEntry *newentry;
 
-	/* Create new list entry */
+    /* Create new list entry */
 
-	newentry = malloc(sizeof(SListEntry));
+    newentry = malloc(sizeof(SListEntry));
 
-	if (newentry == NULL) {
-		return NULL;
-	}
+    if (newentry == NULL) {
+        return NULL;
+    }
 
-	newentry->data = data;
-	newentry->next = NULL;
+    newentry->data = data;
+    newentry->next = NULL;
 
-	/* Hooking into the list is different if the list is empty */
+    /* Hooking into the list is different if the list is empty */
 
-	if (*list == NULL) {
+    if (*list == NULL) {
 
-		/* Create the start of the list */
+        /* Create the start of the list */
 
-		*list = newentry;
+        *list = newentry;
 
-	} else {
+    } else {
 
-		/* Find the end of list */
+        /* Find the end of list */
 
-		for (rover=*list; rover->next != NULL; rover = rover->next);
+        for (rover = *list; rover->next != NULL; rover = rover->next);
 
-		/* Add to the end of list */
+        /* Add to the end of list */
 
-		rover->next = newentry;
-	}
+        rover->next = newentry;
+    }
 
-	return newentry;
+    return newentry;
 }
 
-SListValue slist_data(SListEntry *listentry)
-{
-	return listentry->data;
+SListValue slist_data(SListEntry *listentry) {
+    return listentry->data;
 }
 
-SListEntry *slist_next(SListEntry *listentry)
-{
-	return listentry->next;
+SListEntry *slist_next(SListEntry *listentry) {
+    return listentry->next;
 }
 
-SListEntry *slist_nth_entry(SListEntry *list, unsigned int n)
-{
-	SListEntry *entry;
-	unsigned int i;
+SListEntry *slist_nth_entry(SListEntry *list, unsigned int n) {
+    SListEntry *entry;
+    unsigned int i;
 
-	/* Iterate through n list entries to reach the desired entry.
-	 * Make sure we do not reach the end of the list. */
+    /* Iterate through n list entries to reach the desired entry.
+     * Make sure we do not reach the end of the list. */
 
-	entry = list;
+    entry = list;
 
-	for (i=0; i<n; ++i) {
+    for (i = 0; i < n; ++i) {
 
-		if (entry == NULL) {
-			return NULL;
-		}
-		entry = entry->next;
-	}
+        if (entry == NULL) {
+            return NULL;
+        }
+        entry = entry->next;
+    }
 
-	return entry;
+    return entry;
 }
 
-SListValue slist_nth_data(SListEntry *list, unsigned int n)
-{
-	SListEntry *entry;
+SListValue slist_nth_data(SListEntry *list, unsigned int n) {
+    SListEntry *entry;
 
-	/* Find the specified entry */
+    /* Find the specified entry */
 
-	entry = slist_nth_entry(list, n);
+    entry = slist_nth_entry(list, n);
 
-	/* If out of range, return NULL, otherwise return the data */
+    /* If out of range, return NULL, otherwise return the data */
 
-	if (entry == NULL) {
-		return SLIST_NULL;
-	} else {
-		return entry->data;
-	}
+    if (entry == NULL) {
+        return SLIST_NULL;
+    } else {
+        return entry->data;
+    }
 }
 
-unsigned int slist_length(SListEntry *list)
-{
-	SListEntry *entry;
-	unsigned int length;
+unsigned int slist_length(SListEntry *list) {
+    SListEntry *entry;
+    unsigned int length;
 
-	length = 0;
-	entry = list;
+    length = 0;
+    entry = list;
 
-	while (entry != NULL) {
+    while (entry != NULL) {
 
-		/* Count the number of entries */
+        /* Count the number of entries */
 
-		++length;
+        ++length;
 
-		entry = entry->next;
-	}
+        entry = entry->next;
+    }
 
-	return length;
+    return length;
 }
 
-SListValue *slist_to_array(SListEntry *list)
-{
-	SListEntry *rover;
-	SListValue *array;
-	unsigned int length;
-	unsigned int i;
+SListValue *slist_to_array(SListEntry *list) {
+    SListEntry *rover;
+    SListValue *array;
+    unsigned int length;
+    unsigned int i;
 
-	/* Allocate an array equal in size to the list length */
+    /* Allocate an array equal in size to the list length */
 
-	length = slist_length(list);
+    length = slist_length(list);
 
-	array = malloc(sizeof(SListValue) * length);
+    array = malloc(sizeof(SListValue) * length);
 
-	if (array == NULL) {
-		return NULL;
-	}
+    if (array == NULL) {
+        return NULL;
+    }
 
-	/* Add all entries to the array */
+    /* Add all entries to the array */
 
-	rover = list;
+    rover = list;
 
-	for (i=0; i<length; ++i) {
+    for (i = 0; i < length; ++i) {
 
-		/* Add this node's data */
+        /* Add this node's data */
 
-		array[i] = rover->data;
+        array[i] = rover->data;
 
-		/* Jump to the next list node */
+        /* Jump to the next list node */
 
-		rover = rover->next;
-	}
+        rover = rover->next;
+    }
 
-	return array;
+    return array;
 }
 
-int slist_remove_entry(SListEntry **list, SListEntry *entry)
-{
-	SListEntry *rover;
+int slist_remove_entry(SListEntry **list, SListEntry *entry) {
+    SListEntry *rover;
 
-	/* If the list is empty, or entry is NULL, always fail */
+    /* If the list is empty, or entry is NULL, always fail */
 
-	if (*list == NULL || entry == NULL) {
-		return 0;
-	}
+    if (*list == NULL || entry == NULL) {
+        return 0;
+    }
 
-	/* Action to take is different if the entry is the first in the list */
+    /* Action to take is different if the entry is the first in the list */
 
-	if (*list == entry) {
+    if (*list == entry) {
 
-		/* Unlink the first entry and update the starting pointer */
+        /* Unlink the first entry and update the starting pointer */
 
-		*list = entry->next;
+        *list = entry->next;
 
-	} else {
+    } else {
 
-		/* Search through the list to find the preceding entry */
+        /* Search through the list to find the preceding entry */
 
-		rover = *list;
+        rover = *list;
 
-		while (rover != NULL && rover->next != entry) {
-			rover = rover->next;
-		}
+        while (rover != NULL && rover->next != entry) {
+            rover = rover->next;
+        }
 
-		if (rover == NULL) {
+        if (rover == NULL) {
 
-			/* Not found in list */
+            /* Not found in list */
 
-			return 0;
+            return 0;
 
-		} else {
+        } else {
 
-			/* rover->next now points at entry, so rover is the
-			 * preceding entry. Unlink the entry from the list. */
+            /* rover->next now points at entry, so rover is the
+             * preceding entry. Unlink the entry from the list. */
 
-			rover->next = entry->next;
-		}
-	}
+            rover->next = entry->next;
+        }
+    }
 
-	/* Free the list entry */
+    /* Free the list entry */
 
-	free(entry);
+    free(entry);
 
-	/* Operation successful */
+    /* Operation successful */
 
-	return 1;
+    return 1;
 }
 
 unsigned int slist_remove_data(SListEntry **list, SListEqualFunc callback,
-                               SListValue data)
-{
-	SListEntry **rover;
-	SListEntry *next;
-	unsigned int entries_removed;
+                               SListValue data) {
+    SListEntry **rover;
+    SListEntry *next;
+    unsigned int entries_removed;
 
-	entries_removed = 0;
+    entries_removed = 0;
 
-	/* Iterate over the list.  'rover' points at the entrypoint into the
-	 * current entry, ie. the list variable for the first entry in the
-	 * list, or the "next" field of the preceding entry. */
+    /* Iterate over the list.  'rover' points at the entrypoint into the
+     * current entry, ie. the list variable for the first entry in the
+     * list, or the "next" field of the preceding entry. */
 
-	rover = list;
+    rover = list;
 
-	while (*rover != NULL) {
+    while (*rover != NULL) {
 
-		/* Should this entry be removed? */
+        /* Should this entry be removed? */
 
-		if (callback((*rover)->data, data) != 0) {
+        if (callback((*rover)->data, data) != 0) {
 
-			/* Data found, so remove this entry and free */
+            /* Data found, so remove this entry and free */
 
-			next = (*rover)->next;
-			free(*rover);
-			*rover = next;
+            next = (*rover)->next;
+            free(*rover);
+            *rover = next;
 
-			/* Count the number of entries removed */
+            /* Count the number of entries removed */
 
-			++entries_removed;
-		} else {
+            ++entries_removed;
+        } else {
 
-			/* Advance to the next entry */
+            /* Advance to the next entry */
 
-			rover = &((*rover)->next);
-		}
-	}
+            rover = &((*rover)->next);
+        }
+    }
 
-	return entries_removed;
+    return entries_removed;
 }
 
 /* Function used internally for sorting.  Returns the last entry in the
  * new sorted list */
 
 static SListEntry *slist_sort_internal(SListEntry **list,
-                                       SListCompareFunc compare_func)
-{
-	SListEntry *pivot;
-	SListEntry *rover;
-	SListEntry *less_list, *more_list;
-	SListEntry *less_list_end, *more_list_end;
+                                       SListCompareFunc compare_func) {
+    SListEntry *pivot;
+    SListEntry *rover;
+    SListEntry *less_list, *more_list;
+    SListEntry *less_list_end, *more_list_end;
 
-	/* If there are less than two entries in this list, it is
-	 * already sorted */
+    /* If there are less than two entries in this list, it is
+     * already sorted */
 
-	if (*list == NULL || (*list)->next == NULL) {
-		return *list;
-	}
+    if (*list == NULL || (*list)->next == NULL) {
+        return *list;
+    }
 
-	/* The first entry is the pivot */
+    /* The first entry is the pivot */
 
-	pivot = *list;
+    pivot = *list;
 
-	/* Iterate over the list, starting from the second entry.  Sort
-	 * all entries into the less and more lists based on comparisons
-	 * with the pivot */
+    /* Iterate over the list, starting from the second entry.  Sort
+     * all entries into the less and more lists based on comparisons
+     * with the pivot */
 
-	less_list = NULL;
-	more_list = NULL;
-	rover = (*list)->next;
+    less_list = NULL;
+    more_list = NULL;
+    rover = (*list)->next;
 
-	while (rover != NULL) {
-		SListEntry *next = rover->next;
+    while (rover != NULL) {
+        SListEntry *next = rover->next;
 
-		if (compare_func(rover->data, pivot->data) < 0) {
+        if (compare_func(rover->data, pivot->data) < 0) {
 
-			/* Place this in the less list */
+            /* Place this in the less list */
 
-			rover->next = less_list;
-			less_list = rover;
+            rover->next = less_list;
+            less_list = rover;
 
-		} else {
+        } else {
 
-			/* Place this in the more list */
+            /* Place this in the more list */
 
-			rover->next = more_list;
-			more_list = rover;
+            rover->next = more_list;
+            more_list = rover;
 
-		}
+        }
 
-		rover = next;
-	}
+        rover = next;
+    }
 
-	/* Sort the sublists recursively */
+    /* Sort the sublists recursively */
 
-	less_list_end = slist_sort_internal(&less_list, compare_func);
-	more_list_end = slist_sort_internal(&more_list, compare_func);
+    less_list_end = slist_sort_internal(&less_list, compare_func);
+    more_list_end = slist_sort_internal(&more_list, compare_func);
 
-	/* Create the new list starting from the less list */
+    /* Create the new list starting from the less list */
 
-	*list = less_list;
+    *list = less_list;
 
-	/* Append the pivot to the end of the less list.  If the less list
-	 * was empty, start from the pivot */
+    /* Append the pivot to the end of the less list.  If the less list
+     * was empty, start from the pivot */
 
-	if (less_list == NULL) {
-		*list = pivot;
-	} else {
-		less_list_end->next = pivot;
-	}
+    if (less_list == NULL) {
+        *list = pivot;
+    } else {
+        less_list_end->next = pivot;
+    }
 
-	/* Append the more list after the pivot */
+    /* Append the more list after the pivot */
 
-	pivot->next = more_list;
+    pivot->next = more_list;
 
-	/* Work out what the last entry in the list is.  If the more list was
-	 * empty, the pivot was the last entry.  Otherwise, the end of the
-	 * more list is the end of the total list. */
+    /* Work out what the last entry in the list is.  If the more list was
+     * empty, the pivot was the last entry.  Otherwise, the end of the
+     * more list is the end of the total list. */
 
-	if (more_list == NULL) {
-		return pivot;
-	} else {
-		return more_list_end;
-	}
+    if (more_list == NULL) {
+        return pivot;
+    } else {
+        return more_list_end;
+    }
 }
 
-void slist_sort(SListEntry **list, SListCompareFunc compare_func)
-{
-	slist_sort_internal(list, compare_func);
+void slist_sort(SListEntry **list, SListCompareFunc compare_func) {
+    slist_sort_internal(list, compare_func);
 }
 
 SListEntry *slist_find_data(SListEntry *list,
                             SListEqualFunc callback,
-                            SListValue data)
-{
-	SListEntry *rover;
+                            SListValue data) {
+    SListEntry *rover;
 
-	/* Iterate over entries in the list until the data is found */
+    /* Iterate over entries in the list until the data is found */
 
-	for (rover=list; rover != NULL; rover=rover->next) {
-		if (callback(rover->data, data) != 0) {
-			return rover;
-		}
-	}
+    for (rover = list; rover != NULL; rover = rover->next) {
+        if (callback(rover->data, data) != 0) {
+            return rover;
+        }
+    }
 
-	/* Not found */
+    /* Not found */
 
-	return NULL;
+    return NULL;
 }
 
-void slist_iterate(SListEntry **list, SListIterator *iter)
-{
-	/* Start iterating from the beginning of the list. */
+void slist_iterate(SListEntry **list, SListIterator *iter) {
+    /* Start iterating from the beginning of the list. */
 
-	iter->prev_next = list;
+    iter->prev_next = list;
 
-	/* We have not yet read the first item. */
+    /* We have not yet read the first item. */
 
-	iter->current = NULL;
+    iter->current = NULL;
 }
 
-int slist_iter_has_more(SListIterator *iter)
-{
-	if (iter->current == NULL || iter->current != *iter->prev_next) {
+int slist_iter_has_more(SListIterator *iter) {
+    if (iter->current == NULL || iter->current != *iter->prev_next) {
 
-		/* Either we have not read the first entry, the current
-		 * item was removed or we have reached the end of the
-		 * list.  Use prev_next to determine if we have a next
-		 * value to iterate over. */
+        /* Either we have not read the first entry, the current
+         * item was removed or we have reached the end of the
+         * list.  Use prev_next to determine if we have a next
+         * value to iterate over. */
 
-		return *iter->prev_next != NULL;
+        return *iter->prev_next != NULL;
 
-	} else {
+    } else {
 
-		/* The current entry has not been deleted.  There
-		 * is a next entry if current->next is not NULL. */
+        /* The current entry has not been deleted.  There
+         * is a next entry if current->next is not NULL. */
 
-		return iter->current->next != NULL;
-	}
+        return iter->current->next != NULL;
+    }
 }
 
-SListValue slist_iter_next(SListIterator *iter)
-{
-	if (iter->current == NULL || iter->current != *iter->prev_next) {
+SListValue slist_iter_next(SListIterator *iter) {
+    if (iter->current == NULL || iter->current != *iter->prev_next) {
 
-		/* Either we are reading the first entry, we have reached
-		 * the end of the list, or the previous entry was removed.
-		 * Get the next entry with iter->prev_next. */
+        /* Either we are reading the first entry, we have reached
+         * the end of the list, or the previous entry was removed.
+         * Get the next entry with iter->prev_next. */
 
-		iter->current = *iter->prev_next;
+        iter->current = *iter->prev_next;
 
-	} else {
+    } else {
 
-		/* Last value returned from slist_iter_next was not
-		 * deleted. Advance to the next entry. */
+        /* Last value returned from slist_iter_next was not
+         * deleted. Advance to the next entry. */
 
-		iter->prev_next = &iter->current->next;
-		iter->current = iter->current->next;
-	}
+        iter->prev_next = &iter->current->next;
+        iter->current = iter->current->next;
+    }
 
-	/* Have we reached the end of the list? */
+    /* Have we reached the end of the list? */
 
-	if (iter->current == NULL) {
-		return SLIST_NULL;
-	} else {
-		return iter->current->data;
-	}
+    if (iter->current == NULL) {
+        return SLIST_NULL;
+    } else {
+        return iter->current->data;
+    }
 }
 
-void slist_iter_remove(SListIterator *iter)
-{
-	if (iter->current == NULL || iter->current != *iter->prev_next) {
+void slist_iter_remove(SListIterator *iter) {
+    if (iter->current == NULL || iter->current != *iter->prev_next) {
 
-		/* Either we have not yet read the first item, we have
-		 * reached the end of the list, or we have already removed
-		 * the current value.  Either way, do nothing. */
+        /* Either we have not yet read the first item, we have
+         * reached the end of the list, or we have already removed
+         * the current value.  Either way, do nothing. */
 
-	} else {
+    } else {
 
-		/* Remove the current entry */
+        /* Remove the current entry */
 
-		*iter->prev_next = iter->current->next;
-		free(iter->current);
-		iter->current = NULL;
-	}
+        *iter->prev_next = iter->current->next;
+        free(iter->current);
+        iter->current = NULL;
+    }
 }
 

@@ -1,4 +1,3 @@
-
 /**
  * @file hash-table.h
  *
@@ -65,9 +64,9 @@ typedef void *HashTableValue;
  * used as @ref HashTableIterator next result.
  */
 
-typedef struct _HashTablePair{
-	HashTableKey key;
-	HashTableValue value;
+typedef struct _HashTablePair {
+    HashTableKey key;
+    HashTableValue value;
 } HashTablePair;
 
 /**
@@ -75,9 +74,9 @@ typedef struct _HashTablePair{
  */
 
 struct _HashTableIterator {
-	HashTable *hash_table;
-	HashTableEntry *next_entry;
-	unsigned int next_chain;
+    HashTable *hash_table;
+    HashTableEntry *next_entry;
+    unsigned int next_chain;
 };
 
 /**
