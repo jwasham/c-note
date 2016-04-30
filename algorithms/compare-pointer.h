@@ -1,4 +1,3 @@
-
 /**
  * @file compare-pointer.h
  *

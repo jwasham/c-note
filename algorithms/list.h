@@ -63,8 +63,8 @@ typedef void *ListValue;
  */
 
 struct _ListIterator {
-	ListEntry **prev_next;
-	ListEntry *current;
+    ListEntry **prev_next;
+    ListEntry *current;
 };
 
 /**

@@ -1,4 +1,3 @@
-
 /**
  * @file hash-pointer.h
  *

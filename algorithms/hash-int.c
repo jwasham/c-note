@@ -2,12 +2,11 @@
 
 /* Hash function for a pointer to an integer */
 
-unsigned int int_hash(void *vlocation)
-{
-	int *location;
+unsigned int int_hash(void *vlocation) {
+    int *location;
 
-	location = (int *) vlocation;
+    location = (int *) vlocation;
 
-	return (unsigned int) *location;
+    return (unsigned int) *location;
 }
 
