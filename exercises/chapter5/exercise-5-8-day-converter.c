@@ -5,6 +5,8 @@ static char daytab[2][13] = {
     {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31}
 };
 
+/* Indexed */
+
 int day_of_year(int year, int month, int day)
 {
     int i, leap;
@@ -41,12 +43,12 @@ int main()
 {
     int day;
     int month;
-    int year = 19732;
+    int year = 1977;
     int yearday;
 
-    yearday = day_of_year(year, 3, 10);
+    yearday = day_of_year_pointer(year, 5, 25);
 
-    month_day(year, yearday, &month, &day);
+    month_day_pointer(year, yearday, &month, &day);
 
     if (yearday > 0) {
         printf("yearday: %d\n", yearday);
