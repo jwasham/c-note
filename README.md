@@ -19,6 +19,7 @@ Notes on C and some mini-programs.
 #### Beginner
 
 - The C Programming Language 2nd Edition (1988): http://www.amazon.com/The-Programming-Language-Brian-Kernighan/dp/0131103628
+- Answers to the Book: http://clc-wiki.net/wiki/K%26R2_solutions
 - The C Answer Book: Solutions to the Exercises in 'The C Programming Language,' Second Edition: http://www.amazon.com/The-Answer-Book-Solutions-Programming/dp/0131096532
 - More solutions to exercises in The C Programming Language: https://github.com/anotherlin/tcpl
 - Programming in C (3rd Edition): http://www.amazon.com/dp/0672326663/
